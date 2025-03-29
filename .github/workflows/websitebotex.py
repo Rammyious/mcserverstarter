@@ -99,8 +99,8 @@ except Exception as e:
 #---------------------------
 try:
     wait = WebDriverWait(driver, 30)
-    startworld = wait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
-    startworld = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
+    startworld = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "btn btn-primary")))
+    startworld = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "btn btn-primary")))
 
     driver.execute_script("arguments[0].scrollIntoView(true);", startworld)
     time.sleep(1)
