@@ -75,7 +75,9 @@ try:
     driver.execute_script("arguments[0].click();", username)
     username.send_keys(usernamesec)
     username.send_keys(Keys.RETURN)
-    
+
+    print(usernamesec)
+    print(username)
     # Optional: Wait to observe behavior (debugging)
     time.sleep(5)
     print("entered username")
