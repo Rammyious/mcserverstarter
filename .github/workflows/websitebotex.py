@@ -98,22 +98,18 @@ except Exception as e:
     print(f"Error occurred(password): {e}")
 #---------------------------
 try:
-    # Wait for the start button to be visible
     wait = WebDriverWait(driver, 30)
-    # Ensure the button is visible
-    #startworld = wait.until(EC.visibility_of_element_located((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
-    startworld = driver.find_element(By.CSS_SELECTOR, "button.btn.btn-primary")
-    
-    # Now ensure it’s clickable
-    startworld = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.btn-primary")))
+    startworld = wait.until(EC.presence_of_element_located((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
+    startworld = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
+
     driver.execute_script("arguments[0].scrollIntoView(true);", startworld)
+    time.sleep(1)
     driver.execute_script("arguments[0].click();", startworld)
     print("Clicked start")
     time.sleep(2)
 
 except Exception as e:
     print(f"Error occurred(start): {e}")
-
 #---------------------------
 try:
     # Wait for the alert div to appear
