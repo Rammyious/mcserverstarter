@@ -75,9 +75,7 @@ try:
     driver.execute_script("arguments[0].click();", username)
     username.send_keys(usernamesec)
     username.send_keys(Keys.RETURN)
-
-    print(usernamesec)
-    print(username)
+    
     # Optional: Wait to observe behavior (debugging)
     time.sleep(5)
     print("entered username")
@@ -100,19 +98,21 @@ except Exception as e:
     print(f"Error occurred(password): {e}")
 #---------------------------
 try:
+    # Wait for the start button to be visible
     wait = WebDriverWait(driver, 30)
+    # Ensure the button is visible
+    #startworld = wait.until(EC.visibility_of_element_located((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
+    startworld = driver.find_element(By.CSS_SELECTOR, "button.btn-primary")
     
-    # Alternative Selectors
-    startworld = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'btn-primary')]")))
-    
+    # Now ensure it’s clickable
+    startworld = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button.btn-primary")))
     driver.execute_script("arguments[0].scrollIntoView(true);", startworld)
     driver.execute_script("arguments[0].click();", startworld)
-    
-    print("Clicked Start button")
+    print("Clicked start")
     time.sleep(2)
 
 except Exception as e:
-    print(f"Error occurred (start button): {e}")
+    print(f"Error occurred(start): {e}")
 
 #---------------------------
 try:
